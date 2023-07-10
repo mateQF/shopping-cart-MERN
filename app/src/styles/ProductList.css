@@ -1,0 +1,11 @@
+.main-products {
+    margin-top: 10rem;
+    margin-bottom: 100px; 
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
