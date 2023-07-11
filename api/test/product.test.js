@@ -73,6 +73,43 @@ describe('create a product', () => {
   })
 })
 
+describe('update a product', () => {
+  test('is possible with a valid model', async () => {
+    const { body: products } = await getAllProducts()
+    const productToUpdate = products[0]
+    const newProductInfo = {
+      id: productToUpdate.id,
+      description: 'Notebook updated',
+      quantity: 1,
+      price: 777,
+      imageUrl: 'example'
+    }
+
+    const productUpdated = await api
+      .put(`/api/products/${productToUpdate.id}`)
+      .send(newProductInfo)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    expect(productUpdated.body).toEqual(newProductInfo)
+  })
+
+  test('is not possible with an invalid id', async () => {
+    const newProductInfo = {
+      id: generateObjectId(),
+      description: 'Notebook updated',
+      quantity: 1,
+      price: 777,
+      imageUrl: 'example'
+    }
+
+    await api
+      .put(`/api/products/${newProductInfo.id}`)
+      .send(newProductInfo)
+      .expect(404)
+  })
+})
+
 describe('delete a product', () => {
   test('is possible with a valid model', async () => {
     const { body: products } = await getAllProducts()
