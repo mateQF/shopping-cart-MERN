@@ -15,7 +15,11 @@ getProductRouter.get('/api/products/:id', async (req, res) => {
 
   try {
     const productFound = await Product.findById(id)
-    res.json(productFound)
+    if (productFound === null) {
+      res.status(404).end()
+    } else {
+      res.json(productFound)
+    }
   } catch (error) {
     console.error(error)
   }
@@ -58,7 +62,11 @@ updateProductRouter.put('/api/products/:id', async (req, res) => {
 
   try {
     const product = await Product.findByIdAndUpdate(id, newProductInfo, { new: true })
-    res.status(200).json(product)
+    if (product === null) {
+      res.status(404).end()
+    } else {
+      res.status(200).json(product)
+    }
   } catch (error) {
     console.error(error)
   }
@@ -66,8 +74,17 @@ updateProductRouter.put('/api/products/:id', async (req, res) => {
 
 deleteProductRouter.delete('/api/products/:id', async (req, res) => {
   const { id } = req.params
-  await Product.findByIdAndDelete(id)
-  res.status(204).end()
+  try {
+    const result = await Product.findByIdAndDelete(id)
+    if (result === null) {
+      res.status(404).end()
+    } else {
+      res.status(204).end()
+    }
+  } catch (error) {
+    res.status(500).end()
+    console.error(error)
+  }
 })
 
 module.exports = {
