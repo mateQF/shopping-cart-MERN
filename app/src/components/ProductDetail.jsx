@@ -1,21 +1,21 @@
-import { useParams } from "react-router";
-import { useProducts } from "../hooks/useProducts";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
-import "../styles/ProductDetail.css";
-import { CART_ACTION_TYPES } from "../reducer/cart";
-import { useCartContext } from "../context/CartContext";
+import { useParams } from 'react-router'
+import { useProducts } from '../hooks/useProducts'
+import { Header } from './Header'
+import { Footer } from './Footer'
+import '../styles/ProductDetail.css'
+import { CART_ACTION_TYPES } from '../reducer/cart'
+import { useCartContext } from '../context/CartContext'
 
-export default function ProductDetail() {
-  const { products } = useProducts();
+export default function ProductDetail () {
+  const { products } = useProducts()
   const { dispatch } = useCartContext()
-  const { id } = useParams();
-  const product = products.find((product) => product.id === id);
-  if (!product) return null;
+  const { id } = useParams()
+  const product = products.find((product) => product.id === id)
+  if (!product) return null
 
   const addProduct = (product) => {
-    dispatch({ type: CART_ACTION_TYPES.ADD_PRODUCT, payload: product });
-  };
+    dispatch({ type: CART_ACTION_TYPES.ADD_PRODUCT, payload: product })
+  }
 
   return (
     <>
@@ -63,5 +63,5 @@ export default function ProductDetail() {
       </div>
       <Footer />
     </>
-  );
+  )
 }

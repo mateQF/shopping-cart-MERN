@@ -1,7 +1,7 @@
-import "../styles/Product.css";
-import { Link } from "react-router-dom"
+import '../styles/Product.css'
+import { Link } from 'react-router-dom'
 
-export function Product({ product, addProduct }) {
+export function Product ({ product, addProduct }) {
   return (
     <div className="product-container">
       <figure className="image-container">
@@ -16,12 +16,12 @@ export function Product({ product, addProduct }) {
       </div>
       <div className="btn-container">
         <button className="btn-add" onClick={() => addProduct(product)}>
-          Add to Cart{" "}
+          Add to Cart{' '}
           <span className="material-symbols-outlined icon-link-card">
             shopping_cart
           </span>
         </button>
       </div>
     </div>
-  );
+  )
 }

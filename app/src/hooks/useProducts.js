@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import {
   createProduct,
   deleteProduct,
   getAllProducts,
-  updateProduct,
-} from "../services/products";
+  updateProduct
+} from '../services/products'
 
-export function useProducts() {
-  const [products, setProducts] = useState([]);
+export function useProducts () {
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     getAllProducts().then((products) => {
-      setProducts(products);
-    });
-  }, []);
+      setProducts(products)
+    })
+  }, [])
 
   const add = (product) => {
     createProduct(product).then((newProduct) =>
       setProducts((prevProducts) => [...prevProducts, newProduct])
-    );
-  };
+    )
+  }
 
   const update = (id, updatedProduct) => {
     updateProduct(id, updatedProduct).then((returnedProduct) =>
@@ -28,13 +28,13 @@ export function useProducts() {
           product.id !== id ? product : returnedProduct
         )
       )
-    );
-  };
+    )
+  }
 
   const remove = (id) => {
     deleteProduct(id)
       .then(() => setProducts(prevProducts => prevProducts.filter(product => product.id !== id)))
   }
 
-  return { products, add, update, remove, setProducts };
+  return { products, add, update, remove, setProducts }
 }

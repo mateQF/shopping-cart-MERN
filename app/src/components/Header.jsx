@@ -1,22 +1,22 @@
-import { useCartContext } from "../context/CartContext";
-import { useCart } from "../hooks/useCart";
-import "../styles/Header.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { CART_ACTION_TYPES } from "../reducer/cart";
+import { useCartContext } from '../context/CartContext'
+import { useCart } from '../hooks/useCart'
+import '../styles/Header.css'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { CART_ACTION_TYPES } from '../reducer/cart'
 
-export function Header() {
-  const { productsCart, dispatch } = useCartContext();
-  const { total, countProducts } = useCart(productsCart);
-  const [active, setActive] = useState(false);
+export function Header () {
+  const { productsCart, dispatch } = useCartContext()
+  const { total, countProducts } = useCart(productsCart)
+  const [active, setActive] = useState(false)
 
   const onDeleteProduct = (product) => {
-    dispatch({ type: CART_ACTION_TYPES.DELETE_PRODUCT, payload: product });
-  };
+    dispatch({ type: CART_ACTION_TYPES.DELETE_PRODUCT, payload: product })
+  }
 
   const onCleanCart = () => {
-    dispatch({ type: CART_ACTION_TYPES.CLEAR_CART });
-  };
+    dispatch({ type: CART_ACTION_TYPES.CLEAR_CART })
+  }
 
   return (
     <>
@@ -29,10 +29,11 @@ export function Header() {
           <div className="link" onClick={() => setActive(!active)}>
             <div
               className={`container-cart-products ${
-                active ? "" : "hidden-cart"
+                active ? '' : 'hidden-cart'
               }`}
             >
-              {productsCart.length ? (
+              {productsCart.length
+                ? (
                 <>
                   <div className="row-product">
                     {productsCart.map((product) => (
@@ -74,9 +75,10 @@ export function Header() {
                     Vaciar Carrito
                   </button>
                 </>
-              ) : (
+                  )
+                : (
                 <p className="cart-empty">El carrito está vacío</p>
-              )}
+                  )}
             </div>
             <span className="material-symbols-outlined icon">
               shopping_cart
@@ -86,5 +88,5 @@ export function Header() {
         </div>
       </header>
     </>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import "../styles/Footer.css";
+import '../styles/Footer.css'
 
-export function Footer() {
+export function Footer () {
   return (
     <footer className="footer">
       <div className="name">MATEO FORTUNA</div>
@@ -14,5 +14,5 @@ export function Footer() {
         GitHub
       </a>
     </footer>
-  );
+  )
 }

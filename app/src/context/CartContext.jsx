@@ -1,18 +1,18 @@
-import { createContext, useContext, useReducer } from "react";
-import { cartReducer } from "../reducer/cart";
+import { createContext, useContext, useReducer } from 'react'
+import { cartReducer } from '../reducer/cart'
 
-const CartContext = createContext();
+const CartContext = createContext()
 
 export function useCartContext() { // eslint-disable-line
-  return useContext(CartContext);
+  return useContext(CartContext)
 }
 
-export function CartProvider({ children }) {
-  const [productsCart, dispatch] = useReducer(cartReducer, []);
+export function CartProvider ({ children }) {
+  const [productsCart, dispatch] = useReducer(cartReducer, [])
 
   return (
     <CartContext.Provider value={{ productsCart, dispatch }}>
       {children}
     </CartContext.Provider>
-  );
+  )
 }
