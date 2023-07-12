@@ -24,6 +24,14 @@ describe('get all products', () => {
       .expect('Content-Type', /application\/json/)
   })
 
+  test('get one product by id', async () => {
+    const { body } = await getAllProducts()
+    await api
+      .get(`/api/products/${body[1].id}`)
+      .expect(body[1])
+      .expect('Content-Type', /application\/json/)
+  })
+
   test('there are three products', async () => {
     const { body } = await getAllProducts()
     expect(body).toHaveLength(initialProducts.length)
@@ -94,7 +102,7 @@ describe('update a product', () => {
     expect(productUpdated.body).toEqual(newProductInfo)
   })
 
-  test('is not possible with an invalid id', async () => {
+  test('is not possible if it does not exist', async () => {
     const newProductInfo = {
       id: generateObjectId(),
       description: 'Notebook updated',
