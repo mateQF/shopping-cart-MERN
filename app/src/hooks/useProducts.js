@@ -32,9 +32,32 @@ export function useProducts () {
   }
 
   const remove = (id) => {
-    deleteProduct(id)
-      .then(() => setProducts(prevProducts => prevProducts.filter(product => product.id !== id)))
+    deleteProduct(id).then(() =>
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      )
+    )
   }
 
   return { products, add, update, remove, setProducts }
 }
+
+/*
+export const useUser = () => {
+  const disptach = useAppDispatch()
+
+  const removeUser = (id: UserId) => {
+    disptach(deleteUserById(id))
+  }
+
+  const addNewUser = ({ name, email, github }: User) => {
+    disptach(addUser({ name, email, github }))
+  }
+
+  const rollbackDeleteUser = (user: UserWithId) => {
+    disptach(rollbackUser(user))
+  }
+
+  return { removeUser, addNewUser, rollbackDeleteUser }
+}
+*/

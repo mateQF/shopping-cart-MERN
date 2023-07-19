@@ -1,9 +1,11 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { CartProvider } from './context/CartContext.jsx'
+
+import { store } from './store/index.js'
+import { Provider } from 'react-redux'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <CartProvider>
+  <Provider store={store}>
     <App />
-  </CartProvider>
+  </Provider>
 )

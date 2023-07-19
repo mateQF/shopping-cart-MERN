@@ -1,20 +1,20 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import './App.css'
+import { Toaster } from 'sonner'
 
 const HomePage = lazy(() => import('./components/Home'))
-const ProductDetailPage = lazy(() => import('./components/ProductDetail'))
 
 function App () {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className='lazy-loading'>Loading...</div>}>
+      <Suspense fallback={<div className="lazy-loading">Loading...</div>}>
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/api/products/:id' element={<ProductDetailPage />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </Suspense>
-  </BrowserRouter>
+      <Toaster richColors />
+    </BrowserRouter>
   )
 }
 

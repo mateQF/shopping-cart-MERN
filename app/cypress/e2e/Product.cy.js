@@ -1,6 +1,6 @@
 describe('Product', () => {
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:5173/')
+    cy.visit('http://localhost:5173/')
   })
 
   it('Should display the product name', () => {
@@ -18,7 +18,7 @@ describe('Product', () => {
       .first()
       .click()
 
-    cy.get('.container-cart-products').should('have.length', 1)
+    cy.get('.openCart').click().should('have.length', 1)
     cy.contains('.row-product', 'Notebook EXO 14')
     cy.contains('.row-product', '$599')
   })

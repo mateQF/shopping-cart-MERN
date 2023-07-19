@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-export function useCart (products) {
+export function useTotalCart (products) {
   const [total, setTotal] = useState(0)
-  const [countProducts, setCountProducts] = useState(products.length)
+  const [countProducts, setCountProducts] = useState(0)
 
   useEffect(() => {
     let monto = 0
@@ -13,5 +13,5 @@ export function useCart (products) {
     setCountProducts(products.length)
   }, [products])
 
-  return { total, setTotal, countProducts, setCountProducts }
+  return { total, countProducts }
 }
