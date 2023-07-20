@@ -31,6 +31,7 @@
 .description-container h2 {
   margin: 10px 0;
   font-weight: 400;
+  font-size: 20px;
   color: black;
   cursor: default;
 }
@@ -51,14 +52,10 @@
   margin-bottom: 15px;
 }
 
-/* .link-product-detail:hover {
-  background: lightgray;
-} */
-
 .btn-container {
   display: flex;
   justify-content: flex-start;
-  padding: 0 0 0 15px;
+  padding: 0 15px 0 15px;
 }
 
 .btn-add {
@@ -75,7 +72,7 @@
   margin-bottom: 15px;
   color: white;
   font-size: 20px;
-  width: 80%;
+  width: 100%;
 }
 
 .btn-add:hover {

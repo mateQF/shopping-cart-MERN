@@ -38,7 +38,7 @@ export function Header () {
         <div className={`container-cart-products ${
           active ? '' : 'hidden-cart'
         }`}>
-          <CartProducts productsCart={productsCart} />
+          <CartProducts productsCart={productsCart} setActive={setActive} />
         </div>
       )}
     </>

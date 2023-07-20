@@ -2,7 +2,7 @@ import { useTotalCart } from '../hooks/useTotalCart'
 import '../styles/CartProducts.css'
 import { useProductsCart } from '../hooks/useProductsCart'
 
-export function CartProducts ({ productsCart }) {
+export function CartProducts ({ productsCart, setActive }) {
   const { total } = useTotalCart(productsCart)
   const { handleClearCart, handleRemoveFromCart } = useProductsCart()
 
@@ -12,6 +12,7 @@ export function CartProducts ({ productsCart }) {
 
   const onCleanCart = () => {
     handleClearCart()
+    setActive(false)
   }
 
   return (
